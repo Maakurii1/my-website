@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Lora', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+      background-image: url('sky-loop.gif');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }
+
+    header {
+      background-color: rgba(79, 114, 114, 0.712);
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 50px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Navigation Buttons */
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    nav ul li {
+      margin: 0;
+    }
+
+    nav ul li a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #1abc9c;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #16a085;
+      transform: translateY(-3px);
+    }
+
+    /* Section Tiles */
+    .tile {
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #ddd;
+    }
+
+    .tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #2c3e50;
+      color: #fff;
+      width: 100%;
+      margin-top: 20px;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Gallery Styles */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .gallery-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Hidden Sections */
+    .hidden {
+      display: none;
+    }
+
+    /* About Me Section */
+    #about p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    /* Contact Section */
+    #contact ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #contact ul li {
+      margin: 10px 0;
+    }
+
+    #contact ul li a {
+      color: #1abc9c;
+      text-decoration: none;  
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    #contact ul li a:hover {
+      color: #16a085;
+    }
+
+    /* Floating Action Button */
+    .fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #1abc9c;
+      color: white;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 24px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .fab:hover {
+      background-color: #16a085;
+      transform: scale(1.1);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .gallery-container {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JEAN CARLO A. MAGBUHOS</h1>
+    <nav>
+      <ul>
+        <li><a href="#about" onclick="showSection('about')">About Me</a></li>
+        <li><a href="#contact" onclick="showSection('contact')">Contact & Social Media</a></li>
+        <li><a href="#gallery" onclick="showSection('gallery')">Photo Gallery</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Me Section -->
+  <section id="about" class="tile">
+    <h2>About Me</h2>
+    <p> Hi, I'm Jean Carlo Magbuhos also known as itchie, jean or JC, I am a passionate individual with a diverse range of interests.  One of my greatest passions is basketball.  The thrill of the game, the teamwork, the strategy, and the physical exertion all contribute to my enjoyment.  Whether I'm playing a casual game with friends or participating in a more competitive setting, basketball provides me with a sense of accomplishment and camaraderie.  The fast-paced nature of the game keeps me engaged and energized, and the constant challenge of improving my skills keeps me motivated. </p>
+    <p> Another significant hobby of mine is Mobile Legends.  The strategic depth of the game, the need for quick thinking and adaptability, and the social interaction with teammates all appeal to me.  I enjoy the challenge of mastering different heroes and strategies, and the collaborative aspect of teamwork is particularly rewarding.  The competitive nature of the game keeps me engaged and pushes me to improve my skills, while the social aspect allows me to connect with friends and build lasting relationships. </p>
+    <p> Finally, I also appreciate the simple pleasure of a good night's sleep.  For me, sleep is not just a necessity; it's a vital component of my overall well-being.  A restful night's sleep allows me to recharge, refocus, and approach the next day with renewed energy and enthusiasm.  It's a time for my body and mind to recover and prepare for the challenges and opportunities that lie ahead.  I understand the importance of prioritizing sleep for optimal physical and mental health. </p>
+    <p> In summary, I am a well-rounded individual with a strong moral character, a passion for basketball and Mobile Legends, and a deep appreciation for the restorative power of sleep.  These aspects of my life contribute to my overall well-being and help me to live a fulfilling and meaningful life. </p>
+  </section>
+
+  <!-- Contact & Social Media Section -->
+  <section id="contact" class="tile hidden">
+    <h2>Contact & Social Media</h2>
+    <p>If you'd like to connect with me, feel free to reach out via email or follow me on social media:</p>
+    <ul>
+      <li>Email: <a href="mailto:jeancarlo270828@gmail.com">jeancarlo270828@gmail.com</a></li>
+      <li>Instagram: <a href="https://www.instagram.com/_https.jaesy?igsh=MXUxYnJqZG80MzN6bA==">@https.jaesy</a></li> 
+      <li>Facebook: <a href="https://www.facebook.com/share/1AXkVoarjd/">Jean Carlo</a></li>
+    </ul>
+  </section>
+
+  <!-- Photo Gallery Section -->
+  <section id="gallery" class="tile hidden">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-container">
+      <div class="gallery-item"><img src="kise.jpg" alt="Photo 1"></div>
+      <div class="gallery-item"><img src="itchie.jpg" alt="Photo 2"></div>
+      <div class="gallery-item"><img src="itchie1.jpg" alt="Photo 3"></div>
+      <div class="gallery-item"><img src="gojo.jpg" alt="Photo 4"></div>
+      <div class="gallery-item"><img src="graduationpic.jpg" alt="Photo 5"></div>
+      <div class="gallery-item"><img src="court.jpg" alt="Photo 6"></div>
+    </div>
+  </section>
+
+  <a href="javascript:window.scrollTo(0, 0);" class="fab">&#8593;</a>
+
+  <footer>
+    <p>&copy; 2023 JEAN CARLO A. MAGBUHOS. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showSection(sectionId) {
+      
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.add('hidden');
+      });
+
+      
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    showSection('about');
+  </script>
+</body>
+</html>
